@@ -1,0 +1,8 @@
+# Activar RewriteEngine
+RewriteEngine on
+RewriteCond $1 !^(index\.php¦assets¦images¦js¦css¦uploads¦favicon.png)
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+
+# Reescribir la URL solicitada por el usuario
+RewriteRule ^(.*)$ ./index.php/$1 [L]
