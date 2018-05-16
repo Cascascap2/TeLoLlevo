@@ -4,6 +4,7 @@
         private $id;
         private $nickname;
         private $email;
+        private $password;
         private $telefono;
         private $nombre_completo;
         private $biografia;
@@ -17,16 +18,18 @@
          * @param $id
          * @param $nickname
          * @param $email
+         * @param $password
          * @param $telefono
          * @param $nombre_completo
          * @param $biografia
          * @param $imagen
          * @param $reputacion
          */
-        public function __construct($nickname, $email, $telefono, $nombre_completo, $biografia, $imagen, $reputacion)
+        public function __construct($nickname, $email, $password, $telefono, $nombre_completo, $biografia, $imagen, $reputacion)
         {
             $this->nickname = $nickname;
             $this->email = $email;
+            $this->password = $password;
             $this->telefono = $telefono;
             $this->nombre_completo = $nombre_completo;
             $this->biografia = $biografia;
@@ -51,6 +54,23 @@
         {
             $this->id = $id;
         }
+
+        /**
+         * @return mixed
+         */
+        public function getPassword()
+        {
+            return $this->password;
+        }
+
+        /**
+         * @param mixed $password
+         */
+        public function setPassword($password)
+        {
+            $this->password = $password;
+        }
+
 
         /**
          * @return mixed

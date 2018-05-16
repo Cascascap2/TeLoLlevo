@@ -2,7 +2,7 @@
         <form method="post" action="home">
             <input type="submit" value="Go Home"/>
         </form>
-        <form method="post" action="registrar">
+        <form method="post" action="registro">
             <input type="submit" value="Registrar"/>
         </form>
         <form class="form-signin">
