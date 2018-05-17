@@ -34,10 +34,12 @@ class usuarios_daos{
         if( mysqli_num_rows($result) > 0 ) {
             while( $row = mysqli_fetch_assoc($result) ) {
                 if($row["nickname"] == $nickname){
+                    mysqli_close($conn);
                     return true;
                 }
             }
         }
+        mysqli_close($conn);
         return false;
     }
 
@@ -48,10 +50,34 @@ class usuarios_daos{
         if( mysqli_num_rows($result) > 0 ) {
             while( $row = mysqli_fetch_assoc($result) ) {
                 if($row["email"] == $mail){
+                    mysqli_close($conn);
                     return true;
                 }
             }
         }
+        mysqli_close($conn);
+        return false;
+    }
+
+    public function checkearLogin($nick, $password){
+        $conn = connection::conect();
+        $query = "SELECT * FROM `usuarios` WHERE `nickname` = '$nick'";
+        $result = mysqli_query( $conn, $query );
+        if( mysqli_num_rows($result) > 0 ) {
+            while( $row = mysqli_fetch_assoc($result) ) {
+                if($row["nickname"] == $nick){
+                    if( $row["password"] == $password){
+                        mysqli_close($conn);
+                        return true;
+                    }
+                    else{
+                        mysqli_close($conn);
+                        return false;
+                    }
+                }
+            }
+        }
+        mysqli_close($conn);
         return false;
     }
 }

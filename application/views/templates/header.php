@@ -9,3 +9,10 @@
         <link href="application/views/css/signin.css" rel="stylesheet">
     </head>
     <body>
+    
+    <form method="post" action="login">
+        <input type="submit" value="Login"/>
+    </form>
+    <form method="post" action="logout">
+        <input type="submit" value="Logout"/>
+    </form>

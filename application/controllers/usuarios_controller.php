@@ -30,15 +30,23 @@ class usuarios_controller{
         }
 }
 
-    //Returna true si existe un usuario con el mismo nickname.
+    //Retorna true si existe un usuario con el mismo nickname.
     public function checkearUsuarioPorNickname($nickname){
         $userDao = new usuarios_daos();
         return $userDao->checkearUsuarioPorNickname($nickname);
     }
 
-    //Returna true si existe un usuario con el mismo email.
+    //Retorna true si existe un usuario con el mismo email.
     public function checkearUsuarioPorMail($mail){
         $userDao = new usuarios_daos();
         return $userDao->checkearUsuarioPorMail($mail);
     }
+
+    //Retorna true si el login es correcto
+    public function checkLogin($nickname, $password){
+        $ud = new usuarios_daos();
+        return $ud->checkLogin($nickname, $password);
+    }
+
+
 }
