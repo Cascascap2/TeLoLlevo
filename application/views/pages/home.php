@@ -7,12 +7,11 @@
     }
     echo "This is a comfy home" . "<br/>";
 
-    ?>
-
-<form method="post" action="editarUsuario">
-    <input type="submit" value="Editar mis datos"/>
-</form>
-
+    if(isset($_SESSION["loggedIn"])){?>
+        <form method="post" action="editarUsuario">
+            <input type="submit" value="Editar mis datos" class="btn btn-primary"/>
+        </form>
+    <?php }
 
 
 

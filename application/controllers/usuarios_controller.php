@@ -31,6 +31,9 @@ class usuarios_controller extends CI_Controller {
     }
 
 
+    public function test(){
+        echo "testing";
+    }
 
     //Retorna true si existe un usuario con el mismo nickname.
     public function checkearUsuarioPorNickname($nickname){
