@@ -16,3 +16,6 @@
     <form method="post" action="logout">
         <input type="submit" value="Logout"/>
     </form>
+    <form method="post" action="home">
+        <input type="submit" value="Go Home"/>
+    </form>

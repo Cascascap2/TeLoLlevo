@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "application/db/connection.php";
-
+require_once "application/models/usuario.php";
 
 if(isset($_POST["mail"]) and isset($_POST["password"])){
 $conn = connection::conect();
@@ -12,15 +12,25 @@ die("No se pudo establecer la conexion: " . $conn->connect_error);
 $mail = $_POST["mail"];
 $pass = $_POST["password"];
 
-$query =  "SELECT `nickname` , `password` FROM `usuarios` WHERE `email` = '$mail'";
+$query =  "SELECT * FROM `usuarios` WHERE `email` = '$mail'";
 $result = mysqli_query( $conn, $query );
 
 if($result->num_rows > 0){
 $row = $result->fetch_assoc();
 if($row["password"] == $pass){
-$_SESSION["loggedin"] = true;
-$_SESSION["nickname"] = $row["nickname"];
-header('Location: '. "home");
+    $id = $row["id"];
+    $nickname = $row["nickname"];
+    $telefono = $row["telefono"];
+    $nombreCompleto = $row["nombre_completo"];
+    $biografia = $row["biografia"];
+    $imagen = $row["imagen"];
+    $reputacion = $row["reputacion"];
+
+    $user = new usuario($nickname, $mail, $pass, $telefono, $nombreCompleto, $biografia, $imagen, $reputacion);
+
+    $_SESSION["loggedIn"] = true;
+    $_SESSION["loggedUser"] = $user;
+    header('Location: '. "home");
 }
 }else{
 echo "Email o password incorrectos <br/>";
@@ -30,9 +40,6 @@ mysqli_close($conn);
 ?>
         This is a login
 
-        <form method="post" action="home">
-            <input type="submit" value="Go Home"/>
-        </form>
         <form method="post" action="registro">
             <input type="submit" value="Registrar"/>
         </form>

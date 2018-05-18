@@ -3,7 +3,7 @@
 include "application/models/usuario.php";
 include "application/controllers/daos/usuarios_daos.php";
 
-class usuarios_controller{
+class usuarios_controller extends CI_Controller {
 
     public function crear_usuario($nickname, $email, $password, $telefono,
                                   $nombre_completo){
@@ -28,7 +28,9 @@ class usuarios_controller{
                 }
             }
         }
-}
+    }
+
+
 
     //Retorna true si existe un usuario con el mismo nickname.
     public function checkearUsuarioPorNickname($nickname){

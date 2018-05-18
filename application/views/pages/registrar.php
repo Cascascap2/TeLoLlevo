@@ -21,7 +21,5 @@ try{
 ?>
 <form method="post" action="login">
     <input type="submit" value="Volver al login"/>
+
 </form>
-
-
-
